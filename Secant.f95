@@ -1,7 +1,9 @@
+    ! æ­¤ä¸ºFortran95è¯­æ³•çš„ï¼Œåˆ©ç”¨å‰²çº¿æ³•æ±‚è§£å‡½æ•°æ ¹çš„FORTRANç¨‹åºï¼›
+    ! è¯¥ç¨‹åºç”±trace-shadow / watermelon / ZXGè¿›è¡Œç¼–å†™ï¼Œå®éªŒå‡½æ•°ä¸ºsin(x)ï¼Œå®éªŒç»“æœè‰¯å¥½ã€‚
     module NUMERICAL
     implicit none
-        private zero        ! ´ËÎªË½ÓĞ±äÁ¿
-        private GetPoint    ! ´Ëº¯ÊıÎªË½ÓĞº¯Êı£¬½øĞĞ·â×°
+        private zero        ! æ­¤ä¸ºç§æœ‰å˜é‡
+        private GetPoint    ! æ­¤å‡½æ•°ä¸ºç§æœ‰å‡½æ•°ï¼Œè¿›è¡Œå°è£…
         real, parameter :: zero = 0.00001
     contains
     
@@ -26,11 +28,11 @@
 
         real function Solver(a, b, func)
         implicit none
-            ! ÉùÃ÷²ÎÊı
+            ! å£°æ˜å‚æ•°
             real, intent(inout) :: a
             real, intent(inout) :: b
-            real, external :: func  ! ÉùÃ÷Íâ²¿º¯Êı£¬½øĞĞµ÷ÓÃ
-            ! ÉùÃ÷º¯ÊıÄÚÁÙÊ±±äÁ¿
+            real, external :: func  ! å£°æ˜å¤–éƒ¨å‡½æ•°ï¼Œè¿›è¡Œè°ƒç”¨
+            ! å£°æ˜å‡½æ•°å†…ä¸´æ—¶å˜é‡
             real :: c
             real :: FA
             real :: FB
@@ -67,7 +69,7 @@
     implicit none
         real :: a, b
         real :: ans
-        write(*, *) "ÊäÈëÁ½¸ö²Â²âµÄÊıÖµ:"
+        write(*, *) "è¾“å…¥ä¸¤ä¸ªçŒœæµ‹çš„æ•°å€¼:"
         read(*, *) a, b
         ans = Solver(a, b, func)
         write(*, *) ans
