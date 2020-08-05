@@ -57,8 +57,6 @@
     PROGRAM MAIN
     USE MATMUL_TEST
     IMPLICIT NONE
-        REAL :: T1, T2
-        INTEGER :: I
         CALL SHOWMAT(B)
         WRITE(*, *) "-------------"
         CALL SHOWMAT(C)
