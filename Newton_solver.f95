@@ -1,3 +1,4 @@
+    ! ä½¿ç”¨ç‰›é¡¿æ³•æ±‚è§£å‡½æ•°çš„æ ¹
     module NUMERICAL
     implicit none
         private zero
@@ -7,8 +8,8 @@
         real function Newton(a, f, df)
         implicit none   
             real, intent(inout) :: a
-            real, external :: f         ! ĞèÒªÇó½âµÄº¯Êı
-            real, external :: df        ! ĞèÒªÇó½âµÄº¯ÊıµÄµ¼Êı
+            real, external :: f         ! éœ€è¦æ±‚è§£çš„å‡½æ•°
+            real, external :: df        ! éœ€è¦æ±‚è§£çš„å‡½æ•°çš„å¯¼æ•°
             
             real :: b
             real :: FB
@@ -26,7 +27,7 @@
             return
         end function
         
-        ! ÇóÖµº¯Êı
+        ! æ±‚å€¼å‡½æ•°
         real function func(x)
         implicit none
             real, intent(in) :: x
@@ -34,7 +35,7 @@
             return
         end function
         
-        ! ÇóÖµº¯ÊıµÄµ¼º¯Êı
+        ! æ±‚å€¼å‡½æ•°çš„å¯¼å‡½æ•°
         real function dfunc(x)
         implicit none
             real, intent(in) :: x
@@ -47,7 +48,7 @@
     use NUMERICAL
     implicit none
         real :: a
-        write(*, *) "ÇëÊäÈëÆğÊ¼Öµ:"
+        write(*, *) "è¯·è¾“å…¥èµ·å§‹å€¼:"
         read(*, *) a
         write(*, *) Newton(a, func, dfunc)
     end program
