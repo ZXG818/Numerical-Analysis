@@ -1,3 +1,7 @@
+    ! 自行实现的矩阵相乘操作。
+    ! 本程序由watermelon / trace-shadow 编写
+    ! 此程序使用FORTRAN中列优先原则，充分利用cache的计算加速；
+    ! 经过测试，在IVF编译器release x64 O3优化下，本程序速度快于书中的程序与f95内置函数MATMUL。
     MODULE MATMUL_TEST
     IMPLICIT NONE
         PRIVATE N
