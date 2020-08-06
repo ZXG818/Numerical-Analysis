@@ -1,3 +1,5 @@
+    ! 使用行变换，将矩阵转换为上三角矩阵与下三角矩阵。
+    ! 此程序中含有不足之处，即无法自动进行交换行操作，所以数据中可能会出现NaN的情况。
     MODULE LINEAR_ALGEBRA
     IMPLICIT NONE
         PUBLIC N
@@ -6,23 +8,23 @@
         PUBLIC LOWER
         INTEGER, PARAMETER :: N = 3
     CONTAINS
-        ! ��ʾ��������
+        ! 显示矩阵内容
         SUBROUTINE SHOWMAT(MATRIX)
         IMPLICIT NONE
             REAL, INTENT(IN) :: MATRIX(:, :)
             INTEGER :: I
-            DO I=1, SIZE(MATRIX, 2)     ! �����������
+            DO I=1, SIZE(MATRIX, 2)     ! 遍历矩阵的行
                 WRITE(*, "(4F8.2)") MATRIX(:, I)
             END DO
             RETURN 
         END SUBROUTINE
         
-        ! �������Ǿ�����ӳ���
+        ! 求上三角矩阵的子程序
         SUBROUTINE UPPER(MATRIX)
         IMPLICIT NONE
             REAL, INTENT(INOUT) :: MATRIX(:, :)
             INTEGER :: I, J
-            ! ���о�����б任
+            ! 进行矩阵的行变换
             DO I=1, SIZE(MATRIX, 2)-1
                 DO J=I+1, SIZE(MATRIX, 2)
                     MATRIX(:, J) = MATRIX(:, J) - MATRIX(I, J) * MATRIX(:, I) / MATRIX(I, I)
@@ -31,13 +33,13 @@
             RETURN
         END SUBROUTINE
         
-        ! �������Ǿ�����ӳ���
+        ! 求下三角矩阵的子程序
         SUBROUTINE LOWER(MATRIX)
         IMPLICIT NONE
             REAL, INTENT(INOUT) :: MATRIX(:, :)
             INTEGER :: I
             INTEGER :: J
-            ! ���о�����б任
+            ! 进行矩阵的行变换
             DO I=SIZE(MATRIX, 2), 2, -1
                 DO J=I-1, 1, -1
                     MATRIX(:, J) = MATRIX(:, J) - MATRIX(I, J) &
