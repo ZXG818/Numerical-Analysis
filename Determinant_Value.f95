@@ -1,13 +1,13 @@
-    ! Çó½â¾ØÕóµÄĞĞÁĞÊ½
-    ! ½«¾ØÕó£¨·½Õó£©×ª»»ÎªÉÏÈı½Ç»òÏÂÈı½ÇĞÎÊ½
-    ! Ö÷¶Ô½ÇÏßÔªËØµÄ»ı¼´ÎªĞĞÁĞÊ½µÄÖµ
+    ! æ±‚è§£çŸ©é˜µçš„è¡Œåˆ—å¼
+    ! å°†çŸ©é˜µï¼ˆæ–¹é˜µï¼‰è½¬æ¢ä¸ºä¸Šä¸‰è§’æˆ–ä¸‹ä¸‰è§’å½¢å¼
+    ! ä¸»å¯¹è§’çº¿å…ƒç´ çš„ç§¯å³ä¸ºè¡Œåˆ—å¼çš„å€¼
     module LinearAlgebra
     implicit none
         public ShowMat
         public Upper
         public GetDet
     contains
-        ! ´òÓ¡¾ØÕó
+        ! æ‰“å°çŸ©é˜µ
         subroutine ShowMat(mat)
         implicit none
             real, intent(in) :: mat(:, :)
@@ -18,7 +18,7 @@
             return
         end subroutine
         
-        ! ×ª»»ÎªÉÏÈı½Ç¾ØÕó
+        ! è½¬æ¢ä¸ºä¸Šä¸‰è§’çŸ©é˜µ
         subroutine Upper(mat)
         implicit none
             real, intent(inout) :: mat(:, :)
@@ -31,7 +31,7 @@
             return
         end subroutine
         
-        ! ¶ÔÉÏÈı½Ç¾ØÕó½øĞĞ¶Ô½ÇÏß³Ë»ı
+        ! å¯¹ä¸Šä¸‰è§’çŸ©é˜µè¿›è¡Œå¯¹è§’çº¿ä¹˜ç§¯
         subroutine GetDet(mat, det)
         implicit none
             real, intent(inout) :: mat(:, :)
