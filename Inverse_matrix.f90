@@ -1,3 +1,4 @@
+    ! 通过求解矩阵方程得到矩阵的逆矩阵。
     MODULE NUMERICAL
     IMPLICIT NONE
         PRIVATE UPPER
