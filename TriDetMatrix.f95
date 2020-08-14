@@ -1,14 +1,14 @@
-!  Console1.f90 
+!  æ­¤ä¸ºä¸‰å¯¹è§’çŸ©é˜µæ±‚è§£æ–¹ç¨‹ï¼Œæ˜¯ä¹¦ä¸Šçš„ä¾‹ç¨‹ï¼Œä¸æ˜¯è‡ªå·±å†™çš„ã€‚
 !
 !  FUNCTIONS:
-!  Console1 - ÊéÉÏµÄÀı³Ì¡£
+!  Console1 - ä¹¦ä¸Šçš„ä¾‹ç¨‹ã€‚
 !
 
 !****************************************************************************
 !
 !  PROGRAM: Console1
 !
-!  PURPOSE:  Èı¶Ô½Ç¾ØÕóÇó½â
+!  PURPOSE:  ä¸‰å¯¹è§’çŸ©é˜µæ±‚è§£
 !
 !****************************************************************************
 
@@ -36,7 +36,7 @@
         end do
     end program main
     
-    ! Gauss-Jordan·¨Çó½âº¯Êı
+    ! Gauss-Jordanæ³•æ±‚è§£å‡½æ•°
     subroutine Gauss_Jordan(A, S, ANS, Row, Width)
     implicit none
         integer, intent(in) :: Row, Width
@@ -46,15 +46,15 @@
         real :: B(Row, Width)
         integer :: i
         
-        ! ±£´æÔ­ÏÈµÄ¾ØÕóAÒÔ¼°Êı×éS
+        ! ä¿å­˜åŸå…ˆçš„çŸ©é˜µAä»¥åŠæ•°ç»„S
         B = A
         ANS = S
         
-        ! ½«B»¯Îª¶Ô½ÇÏß¾ØÕó
+        ! å°†BåŒ–ä¸ºå¯¹è§’çº¿çŸ©é˜µ
         call Upper(B, ANS, Row, Width)
         call Lower(B, ANS, Row, Width)
         
-        ! Çó½â
+        ! æ±‚è§£
         !forall(i=1:Row) ANS(i) = ANS(i) / B(i, 2)
         do i=1, Row
             ANS(i) = ANS(i) / B(i, 2)
@@ -62,7 +62,7 @@
         return 
     end subroutine 
     
-    ! ÇóÉÏÈı½Ç¾ØÕóµÄ×Ó³ÌĞò
+    ! æ±‚ä¸Šä¸‰è§’çŸ©é˜µçš„å­ç¨‹åº
     subroutine Upper(M, S, Row, Width)
     implicit none
         integer, intent(in) :: Row, Width
@@ -80,7 +80,7 @@
         return
     end subroutine 
     
-    ! ÇóÏÂÈı½Ç¾ØÕóµÄ×Ó³ÌĞò
+    ! æ±‚ä¸‹ä¸‰è§’çŸ©é˜µçš„å­ç¨‹åº
     subroutine Lower(M, S, Row, Width)
     implicit none
         integer, intent(in) :: Row, Width
