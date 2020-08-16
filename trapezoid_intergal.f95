@@ -1,14 +1,14 @@
-! Ê¹ÓÃÌİĞÎ·¨¼ÆËã»ı·Ö
+! ä½¿ç”¨æ¢¯å½¢æ³•è®¡ç®—ç§¯åˆ†
     module INTEGRAL
     implicit none 
         real, parameter :: PI = 3.1415926
     contains
-        ! Éú³ÉÀëÉ¢µÄµãÊı¾İ
+        ! ç”Ÿæˆç¦»æ•£çš„ç‚¹æ•°æ®
         subroutine GenerateData(sample, lower, upper, func)
         implicit none
             real, intent(inout) :: sample(:)
-            real, intent(in) :: lower, upper ! »ı·ÖÉÏÏÂ½ç
-            real, external :: func           ! ±»»ıº¯Êı
+            real, intent(in) :: lower, upper ! ç§¯åˆ†ä¸Šä¸‹ç•Œ
+            real, external :: func           ! è¢«ç§¯å‡½æ•°
             real :: r, width
             integer :: i, n
             n = size(sample, 1)
@@ -20,7 +20,7 @@
             end do
             return
         end subroutine
-        ! Ê¹ÓÃÌİĞÎ·¨¼ÆËã»ı·Ö
+        ! ä½¿ç”¨æ¢¯å½¢æ³•è®¡ç®—ç§¯åˆ†
         real function Trape_Integral(sample, lower, upper)
         implicit none
             real, intent(inout) :: sample(:)
@@ -31,7 +31,7 @@
             n = size(sample, 1)
             width = (upper - lower) / (n - 1)
             do i=1, n-1
-                sum = sum + (sample(i) + sample(i+1))*width/2 ! ¼ÆËãÌİĞÎÃæ»ı
+                sum = sum + (sample(i) + sample(i+1))*width/2 ! è®¡ç®—æ¢¯å½¢é¢ç§¯
             end do
             Trape_Integral = sum
             return 
@@ -41,14 +41,14 @@
     program main
     use INTEGRAL
     implicit none
-        real :: sample(10000001) ! ¼Æ»®²ÉÈ¡10000001¸öµã
+        real :: sample(10000001) ! è®¡åˆ’é‡‡å–10000001ä¸ªç‚¹
         real :: upper = PI
         real :: lower = 0
         real :: ans
         real, intrinsic :: sin
-        call GenerateData(sample, lower, upper, sin) !¼ÆËã0µ½PIµÄsinµÄ»ı·Ö
+        call GenerateData(sample, lower, upper, sin) !è®¡ç®—0åˆ°PIçš„sinçš„ç§¯åˆ†
         ans = Trape_Integral(sample, lower, upper)
         write(*, "(A6, F20.12)") 'ans=', ans
     end program
     
-    ! ¼ÆËã½á¹û£º  ans=      2.000000000000
+    ! è®¡ç®—ç»“æœï¼š  ans=      2.000000000000
