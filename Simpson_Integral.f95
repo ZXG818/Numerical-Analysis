@@ -1,12 +1,12 @@
-    ! SimpsonĞÁÆÕÉ­»ı·Ö·¨
-    ! ²ÉÑùµãµÄ¸öÊı±ØĞëÎªÆæÊı
-    ! ¼ÆËã¹«Ê½£ºIntegeral(fx) = (f0 + 4*f1 + 2*f2 + 4*f3 + 2*f4 + ... + 4*fn-1 + fn) * h / 3 
-    ! ÆäÖĞhÎª³ÌĞòÖĞµÄwidth±äÁ¿
+    ! Simpsonè¾›æ™®æ£®ç§¯åˆ†æ³•
+    ! é‡‡æ ·ç‚¹çš„ä¸ªæ•°å¿…é¡»ä¸ºå¥‡æ•°
+    ! è®¡ç®—å…¬å¼ï¼šIntegeral(fx) = (f0 + 4*f1 + 2*f2 + 4*f3 + 2*f4 + ... + 4*fn-1 + fn) * h / 3 
+    ! å…¶ä¸­hä¸ºç¨‹åºä¸­çš„widthå˜é‡
     module MY_INTEGRAL
     implicit none
         real, parameter :: PI = 3.1415926
     contains
-        ! »ñÈ¡²ÉÑùµã
+        ! è·å–é‡‡æ ·ç‚¹
         subroutine Sample(s, lower, upper, func)
         implicit none
             real, intent(inout) :: s(:)
@@ -23,7 +23,7 @@
             end do
             return
         end subroutine
-        ! ÀûÓÃ¹«Ê½½øĞĞ¼ÆËã»ı·Ö
+        ! åˆ©ç”¨å…¬å¼è¿›è¡Œè®¡ç®—ç§¯åˆ†
         real function GetIntegeral(s, lower, upper)
         implicit none
             real, intent(in) :: s(:)
@@ -54,4 +54,4 @@
         ans = GetIntegeral(s, lower, upper)
         write(*, *) ans
     end program
-    ! ÔËĞĞ½á¹û£º1.999978 ´ËÎªsin(x)ÔÚ0µ½PIÉÏµÄ»ı·Ö
+    ! è¿è¡Œç»“æœï¼š1.999978 æ­¤ä¸ºsin(x)åœ¨0åˆ°PIä¸Šçš„ç§¯åˆ†
