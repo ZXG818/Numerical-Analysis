@@ -1,3 +1,5 @@
+    ! æ‹‰æ ¼æœ—æ—¥å¤šé¡¹å¼æ’å€¼æ³•ï¼Œè¯¦ç»†æ¨å¯¼è§ç›¸å…³è®¡ç®—æ–¹æ³•æˆ–æ•°å€¼åˆ†æçš„ä¹¦ã€‚
+    ! æœ¬ç¨‹åºåªè®¨è®ºé€šè¿‡æ‹‰æ ¼æœ—æ—¥å¤šé¡¹å¼æ’å€¼æ¥è¿›è¡Œæ±‚è§£å‡½æ•°çš„å€¼ï¼Œå¹¶æ— è®¨è®ºæ’å€¼åçš„ä½™é¡¹ï¼ˆå³è¯¯å·®ï¼‰
     module Lagrange_Interpolation
     implicit none
         type :: point
@@ -6,7 +8,7 @@
         end type
         real, parameter :: PI = 3.1415926
     contains
-        ! »ñÈ¡º¯ÊıµÄ²åÖµµãµÄ±ê×¼Öµ
+        ! è·å–å‡½æ•°çš„æ’å€¼ç‚¹çš„æ ‡å‡†å€¼
         subroutine GetSample(datas, func, lower, upper)
         implicit none
             type(point), intent(out) :: datas(:)
@@ -24,14 +26,14 @@
             end do
             return 
         end subroutine
-        ! ¼ÆËã²åÖµ»ùº¯ÊıµÄ·Ö×Ó
+        ! è®¡ç®—æ’å€¼åŸºå‡½æ•°çš„åˆ†å­
         real function MulNumerator(datas, index, unknown)
         implicit none   
             type(point), intent(in) :: datas(:)
             integer, intent(in) :: index
             real, intent(in) :: unknown
             integer :: N, i
-            MulNumerator = 1.0  ! ¾¡Á¿¼õÉÙ×Ó³ÌĞò»òº¯ÊıÖĞÁÙÊ±±äÁ¿µÄÊ¹ÓÃ£¬ÒòÎª»áÓĞÒ»¸ö×Ô¶¯saveÀàĞÍµÄÏİÚå£¡
+            MulNumerator = 1.0  ! å°½é‡å‡å°‘å­ç¨‹åºæˆ–å‡½æ•°ä¸­ä¸´æ—¶å˜é‡çš„ä½¿ç”¨ï¼Œå› ä¸ºä¼šæœ‰ä¸€ä¸ªè‡ªåŠ¨saveç±»å‹çš„é™·é˜±ï¼
             N = size(datas, 1)
             do i=1, N
                 if(i /= index) then
@@ -40,13 +42,13 @@
             end do
             return 
         end function
-        ! ¼ÆËã²åÖµ»ùº¯ÊıµÄ·ÖÄ¸
+        ! è®¡ç®—æ’å€¼åŸºå‡½æ•°çš„åˆ†æ¯
         real function MulDenominator(datas, index)
         implicit none
             type(point), intent(in) :: datas(:)
             integer, intent(in) :: index
             integer :: N, i
-            MulDenominator = 1.0  ! ¾¡Á¿¼õÉÙ×Ó³ÌĞò»òº¯ÊıÖĞÁÙÊ±±äÁ¿µÄÊ¹ÓÃ£¬ÒòÎª»áÓĞÒ»¸ö×Ô¶¯saveÀàĞÍµÄÏİÚå£¡
+            MulDenominator = 1.0  ! å°½é‡å‡å°‘å­ç¨‹åºæˆ–å‡½æ•°ä¸­ä¸´æ—¶å˜é‡çš„ä½¿ç”¨ï¼Œå› ä¸ºä¼šæœ‰ä¸€ä¸ªè‡ªåŠ¨saveç±»å‹çš„é™·é˜±ï¼
             N = size(datas, 1)
             do i=1, N
                 if(i /= index) then
@@ -55,7 +57,7 @@
             end do
             return 
         end function
-        ! ½øĞĞÀ­¸ñÀÊÈÕ²åÖµ
+        ! è¿›è¡Œæ‹‰æ ¼æœ—æ—¥æ’å€¼
         real function Lagrange(datas, unknown)
         implicit none
             type(point), intent(inout) :: datas(:)
@@ -79,6 +81,6 @@
         type(point) :: datas(10)
         real, intrinsic :: sin
         call GetSample(datas, sin, 0.0, PI)
-        write(*, "(A, F20.16)") "À­¸ñÀÊÈÕ²åÖµµÃµ½µÄÖµ£º", Lagrange(datas, 0.3367)
-        write(*, "(A, F20.16)") "Ê¹ÓÃsin¼ÆËãµÃµ½sin(0.3367)£º", sin(0.3367)
+        write(*, "(A, F20.16)") "æ‹‰æ ¼æœ—æ—¥æ’å€¼å¾—åˆ°çš„å€¼ï¼š", Lagrange(datas, 0.3367)
+        write(*, "(A, F20.16)") "ä½¿ç”¨sinè®¡ç®—å¾—åˆ°sin(0.3367)ï¼š", sin(0.3367)
     end program
