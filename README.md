@@ -1,5 +1,5 @@
-# FORTRAN_CALCULATION_METHOD
-使用FORTRAN95编写的一些计算方法的实例代码，全部自行编写，在VS2013和Intel Visual Fortran2013下编译测试；
+# CALCULATION_METHOD
+使用FORTRAN95与Python编写的一些计算方法的实例代码，全部自行编写，在VS2013和Intel Visual Fortran2013下编译测试；
 进行了小范围的测试，由于本人代码水平有限，所以在使用时请谨慎使用代码，但是用来学习还是非常不错的；
 也欢迎和我讨论程序，欢迎与我进行讨论：zxg818@stu.xjtu.edu.cn
 
