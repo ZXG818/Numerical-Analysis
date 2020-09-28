@@ -1,46 +1,46 @@
-    ! ×·¸Ï·¨·Ö½âÈı¶Ô½Ç¾ØÕó
+    ! è¿½èµ¶æ³•åˆ†è§£ä¸‰å¯¹è§’çŸ©é˜µ
     module TridiagonalMatrix
     implicit none
-        ! ±¾½á¹¹ÌåÔÚ¸Ã³ÌĞòÖĞÓÃ´¦²»´ó£¬ÖµµÃÒ»ÌáµÄÊÇ£¬
-        ! ÔÚÏ¡Êè¾ØÕóµÄÔËËã¹ı³ÌÖĞ£¬¿ÉÒÔÊ¹ÓÃ¸Ã½á¹¹ÌåÀ´¼ÇÂ¼ÄÇĞ©²»ÎªÁãµÄÔªËØ¡£
+        ! æœ¬ç»“æ„ä½“åœ¨è¯¥ç¨‹åºä¸­ç”¨å¤„ä¸å¤§ï¼Œå€¼å¾—ä¸€æçš„æ˜¯ï¼Œ
+        ! åœ¨ç¨€ç–çŸ©é˜µçš„è¿ç®—è¿‡ç¨‹ä¸­ï¼Œå¯ä»¥ä½¿ç”¨è¯¥ç»“æ„ä½“æ¥è®°å½•é‚£äº›ä¸ä¸ºé›¶çš„å…ƒç´ ã€‚
         type :: point
             integer :: i
             integer :: j
             real    :: value
         end type
     contains
-        ! ÎªÁËÊ¹ÓÃ¾ØÕóµÄÁĞÏà¹Ø²Ù×÷£¬¾ÙÀı£º¶¨Òåmatrix(3, 4)Îª4ĞĞ3ÁĞ¾ØÕó
+        ! ä¸ºäº†ä½¿ç”¨çŸ©é˜µçš„åˆ—ç›¸å…³æ“ä½œï¼Œä¸¾ä¾‹ï¼šå®šä¹‰matrix(3, 4)ä¸º4è¡Œ3åˆ—çŸ©é˜µ
         subroutine PrintMatrix(matrix)
         implicit none
             real, intent(in) :: matrix(:, :)
             integer          :: i
             integer          :: row
             row = size(matrix, 2)
-            ! °´ĞĞ´òÓ¡¾ØÕó
+            ! æŒ‰è¡Œæ‰“å°çŸ©é˜µ
             do i=1, row
                 write(*, *) matrix(:, i)
             end do
             return
         end subroutine
-        ! ¿ªÊ¼½øĞĞ×·¸Ï·¨½øĞĞLU·Ö½â
+        ! å¼€å§‹è¿›è¡Œè¿½èµ¶æ³•è¿›è¡ŒLUåˆ†è§£
         subroutine Run_Chase(matrix, L, U, b)
         implicit none
             real, intent(in)    :: matrix(:, :)
             real, intent(out)   :: L(:, :)
             real, intent(out)   :: U(:, :)
-            real, intent(inout) :: b(:)   ! ·½³ÌµÈºÅÓÒ±ßµÄÁĞ¾ØÕó
+            real, intent(inout) :: b(:)   ! æ–¹ç¨‹ç­‰å·å³è¾¹çš„åˆ—çŸ©é˜µ
             real, allocatable   :: y(:)
             integer             :: i, j
             integer             :: row
             integer             :: col
             row = size(matrix, 2)
-            ! ÎªÖĞ¼ä·½³Ì½á¹ûyÉêÇëÄÚ´æ¿Õ¼ä
+            ! ä¸ºä¸­é—´æ–¹ç¨‹ç»“æœyç”³è¯·å†…å­˜ç©ºé—´
             allocate(y(row))
-            ! ÏÈ¼ÆËã¾ØÕóµÄµÚÒ»¸öÊı
+            ! å…ˆè®¡ç®—çŸ©é˜µçš„ç¬¬ä¸€ä¸ªæ•°
             U(1, 1) = matrix(1, 1)
             L(1, 1) = 1.0
             y(1) = b(1)
-            ! ¿ªÊ¼½øĞĞLºÍUµÄÇó½â
+            ! å¼€å§‹è¿›è¡ŒLå’ŒUçš„æ±‚è§£
             do i=2, row
                 L(i-1, i) = matrix(i-1, i) / U(i-1, i-1)
                 L(i, i) = 1
@@ -48,18 +48,18 @@
                 U(i, i-1) = matrix(i, i-1)
                 y(i) = b(i) - L(i-1, i) * y(i-1)
             end do
-            ! ½«y¼ÆËãµÄÖµ·µ»Ø¸øb
+            ! å°†yè®¡ç®—çš„å€¼è¿”å›ç»™b
             b = y
-            ! ÊÍ·ÅyÉêÇëµÄ¿Õ¼ä
+            ! é‡Šæ”¾yç”³è¯·çš„ç©ºé—´
             deallocate(y)
             return
         end subroutine
-        ! ÀûÓÃ¸ßË¹ÏûÔª·¨ÖĞµÄ»Ø´ú¹ı³ÌÍê³É·½³Ì×éµÄ×îÖÕÇó½â
+        ! åˆ©ç”¨é«˜æ–¯æ¶ˆå…ƒæ³•ä¸­çš„å›ä»£è¿‡ç¨‹å®Œæˆæ–¹ç¨‹ç»„çš„æœ€ç»ˆæ±‚è§£
         subroutine Solution(U, b, x)
         implicit none
             real, intent(inout) :: U(:, :)
             real, intent(inout) :: b(:)
-            real, intent(out)   :: x(:)  ! ÓÃÓÚ´æ·Å×îÖÕ½á¹û
+            real, intent(out)   :: x(:)  ! ç”¨äºå­˜æ”¾æœ€ç»ˆç»“æœ
             integer             :: row, col, i, j
             row = size(U, 2)
             col = size(U, 1)
@@ -73,7 +73,7 @@
             return
         end subroutine
     end module
-    ! ¿ªÊ¼Ö÷³ÌĞò
+    ! å¼€å§‹ä¸»ç¨‹åº
     program main
     use TridiagonalMatrix
     implicit none
@@ -86,16 +86,16 @@
         integer :: row = 5
         call Run_Chase(matrix, L, U, b)
         
-        write(*, *) "Èı¶Ô½Ç¾ØÕóµÄLU·Ö½âÈçÏÂËùÊ¾£º"
-        write(*, *) "==============================L¾ØÕó=============================="
+        write(*, *) "ä¸‰å¯¹è§’çŸ©é˜µçš„LUåˆ†è§£å¦‚ä¸‹æ‰€ç¤ºï¼š"
+        write(*, *) "==============================LçŸ©é˜µ=============================="
         call PrintMatrix(L)
-        write(*, *) "==============================U¾ØÕó=============================="
+        write(*, *) "==============================UçŸ©é˜µ=============================="
         call PrintMatrix(U)
-        write(*, *) "============================ÖĞ¼äbÏòÁ¿============================="
+        write(*, *) "============================ä¸­é—´bå‘é‡============================="
         write(*, *) b
-        ! ½â·½³Ì
+        ! è§£æ–¹ç¨‹
         call Solution(U, b, x)
-        write(*, *) "·½³ÌµÄ×îÖÕ½á¹û£º"
+        write(*, *) "æ–¹ç¨‹çš„æœ€ç»ˆç»“æœï¼š"
         write(*, *) x
     end program
     
